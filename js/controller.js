@@ -22,6 +22,13 @@ Controller.prototype = {
     this.gpu.init();
     this.slider.init();
 
+    var ualc = navigator.userAgent.toLowerCase();
+
+    this.isMobile = /ipad|iphone|ipod/.test(ualc)
+      || /android/.test(ualc);
+
+    if(this.isMobile) document.documentElement.classList.add('mobile');
+
     var self = this;
 
     this.slider.onchange = function(bool){

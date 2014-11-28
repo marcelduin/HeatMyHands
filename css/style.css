@@ -8,7 +8,7 @@ html,body {
   height: 100%;
 }
 body {
-  font-family: 'Trebuchet MS', 'Arial';
+  font-family: Helvetica, Arial;
   color: #fff;
   background: #222;
 }
@@ -18,10 +18,10 @@ body {
   left: 0;
   display: none;
 }
-#gradient {
+.gradient {
   opacity: 0;
 }
-#gradient,
+.gradient,
 #phone,
 #glass1,
 #glass2 {
@@ -58,12 +58,6 @@ body.state-2 #glass1 {
 body.state-3 #glass1, body.state-3 #glass2 {
   visibility: visible;
 
-}
-
-#phone {
-  background: transparent url(../img/bg.jpg) center top no-repeat;
-  background-size: 100% auto;
-  opacity: .1;
 }
 
 canvas#webgl {
@@ -147,7 +141,7 @@ html.started #logo>g {
   fill: #000;
 }
 
-body.state-1 #gradient {
+body.state-1 .gradient {
   opacity: 1;
   background: transparent linear-gradient(180deg,#e8af66,#f89456,#d29457);
 }
@@ -159,7 +153,7 @@ body.state-1 .slider {
 }
 
 
-body.state-2 #gradient {
+body.state-2 .gradient {
   opacity: 1;
   background: transparent linear-gradient(180deg,#ff8d5d,#ff9a80,#ff73a3);
 }
@@ -174,7 +168,7 @@ body.state-2 .slider {
   background: transparent linear-gradient(180deg,#d98771,#feb9b4);
 }
 
-body.state-3 #gradient {
+body.state-3 .gradient {
   opacity: 1;
   background: transparent linear-gradient(180deg,#fec3a7,#aeb3e8,#c9aef1,#d5d8ff);
 }
@@ -189,7 +183,7 @@ body.state-3 .slider {
 }
 
 /* transitions */
-#gradient {
+.gradient {
   -webkit-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
 }
@@ -199,11 +193,100 @@ body.state-3 .slider {
   transition: fill 1s ease-in-out;
 }
 
-html.busy #gradient {
+html.busy .gradient {
   -webkit-transition: opacity 5s ease-in-out;
   transition: opacity 5s ease-in-out;
 }
 html.busy #logo>g {
   -webkit-transition: fill 5s ease-in-out;
   transition: fill 5s ease-in-out;
+}
+
+/* actual site */
+#phone {
+  background: transparent url(../img/bg.jpg) center top no-repeat;
+  background-size: 100% auto;
+  opacity: .1;
+}
+
+section#content {
+  display: none;
+}
+
+footer {
+  color: rgba(255,255,255,.32);
+  padding: 0 10%;
+  font-weight: bold;
+  text-align: center;
+  font-size: 12px;
+}
+
+/* responsiveness */
+@media (min-width: 520px) {
+  html:not(.mobile) #app-container {
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    width: 486px;
+    height: 891px;
+    padding-top: 83px;
+    background: transparent url(../img/iphone.png) center center no-repeat;
+    background-size: contain;
+    -webkit-transform-origin: center top;
+    -webkit-transform: scale3d(.5,.5,1) translate3d(-243px,-445px,0);
+    transform-origin: left top;
+    transform: scale3d(.5,.5,1) translate3d(-243px,-445px,0);
+    
+  }
+  html:not(.mobile) #app {
+    background: #222;
+    position: absolute;
+    top: 138px;
+    left: 60px;
+    width: 360px;
+    height: 640px;
+    overflow: hidden;
+    z-index: 20;
+  }
+
+  html:not(.mobile) section#content {
+    display: block;
+    position: relative;
+    width: 730px;
+    left: 50%;
+    top: 45%;
+    padding-top: 41px;
+    -webkit-transform: translate3d(-365px,-223px,0);
+    transform: translate3d(-365px,-223px,0);
+  }
+  section#content>.right {
+    float: right;
+    width: 243px;
+  }
+  section#content>.left {
+    float: left;
+    width: 243px;
+  }
+  section#content>.left,
+  section#content>.right {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  section#content p {
+    font-size: 14px;
+    font-weight: bold;
+    color: rgba(255,255,255,.48);
+  }
+  section#content p.highlight {
+    color: rgba(255,255,255,.66);
+  }
+  footer {
+    position: absolute;
+    bottom: 40px;
+    width: 60%;
+    left: 20%;
+    padding: 0;
+  }
+
 }
