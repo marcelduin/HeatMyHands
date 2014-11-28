@@ -1,0 +1,209 @@
+html {
+  -ms-touch-action: none;
+}
+html,body {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  height: 100%;
+}
+body {
+  font-family: 'Trebuchet MS', 'Arial';
+  color: #fff;
+  background: #222;
+}
+#debug {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+#gradient {
+  opacity: 0;
+}
+#gradient,
+#phone,
+#glass1,
+#glass2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+}
+#glass1,#glass2 {
+  pointer-events: none;
+  -webkit-pointer-events: none;
+  z-index: 10;
+  visibility: hidden;
+  -webkit-transition: visibility 0s 30s;
+  transition: visibility 0s 30s;
+}
+#glass1 {
+  background: transparent url(../img/glass.png) 50% center no-repeat;
+  background-size: cover;
+  opacity: .6;
+}
+#glass2 {
+  background: transparent url(../img/glass.png) 50% center no-repeat;
+  background-size: cover;
+  -webkit-transform: scale3d(-1,-1,1);
+  transform: scale3d(-1,-1,1);
+  opacity: .6;
+}
+body.state-2 #glass1 {
+  visibility: visible;
+}
+body.state-3 #glass1, body.state-3 #glass2 {
+  visibility: visible;
+
+}
+
+#phone {
+  background: transparent url(../img/bg.jpg) center top no-repeat;
+  background-size: 100% auto;
+  opacity: .1;
+}
+
+canvas#webgl {
+  position: absolute;
+  top: 18%;
+  left: 68%;
+  transform: translate3d(-50%,-50%,0);
+  -webkit-transform: translate3d(-50%,-50%,0);
+  -webkit-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
+}
+html.started canvas#webgl {
+  opacity: 1;
+}
+
+header {
+  position: relative;
+  z-index: 10;
+  width: 320px;
+  height: 201px;
+  margin: 5px auto;
+}
+header>#logo {
+  height: 100%;
+  margin: 0 auto;
+}
+
+.slider {
+  width: 180px;
+  height: 64px;
+  margin: 40px auto;
+  position: relative;
+  border-radius: 32px;
+  background: #bbb linear-gradient(180deg,#212121,#3e3c3c);
+}
+.slider>.button {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  background: transparent url(../img/button.png) center center no-repeat;
+  background-size: contain;
+  left: 0px;
+  cursor: pointer;
+}
+.slider>.back {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 168px;
+  height: 52px;
+  border-radius: 26px;
+  background: #171717;
+}
+.slider>.off {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 168px;
+  height: 52px;
+  background: transparent url(../img/off.svg) right 50px center no-repeat;
+  background-size: auto 30%;
+}
+.slider>.on {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 0px;
+  height: 52px;
+  overflow: hidden;
+}
+.slider>.on svg {
+  margin-top: 19px;
+  margin-left: 10px;
+  height: 15px;
+}
+
+
+/* states */
+html.started #logo>g {
+  fill: #000;
+}
+
+body.state-1 #gradient {
+  opacity: 1;
+  background: transparent linear-gradient(180deg,#e8af66,#f89456,#d29457);
+}
+body.state-1 #logo>g {
+  fill: #ffbd5c;
+}
+body.state-1 .slider {
+  background: transparent linear-gradient(180deg,#df6f28,#f9ba8e);
+}
+
+
+body.state-2 #gradient {
+  opacity: 1;
+  background: transparent linear-gradient(180deg,#ff8d5d,#ff9a80,#ff73a3);
+}
+body.state-2 #logo>g {
+  fill: #f16482;
+}
+body.state-2 .slider>.on svg>g {
+  fill: #ff887f;
+}
+
+body.state-2 .slider {
+  background: transparent linear-gradient(180deg,#d98771,#feb9b4);
+}
+
+body.state-3 #gradient {
+  opacity: 1;
+  background: transparent linear-gradient(180deg,#fec3a7,#aeb3e8,#c9aef1,#d5d8ff);
+}
+body.state-3 #logo>g {
+  fill: #f8e9ff;
+}
+body.state-3 .slider>.on svg>g {
+  fill: #ccb8dd;
+}
+body.state-3 .slider {
+  background: transparent linear-gradient(180deg,#b495c9,#e7dff7);
+}
+
+/* transitions */
+#gradient {
+  -webkit-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+#logo>g,
+.slider>.on svg>g {
+  -webkit-transition: fill 1s ease-in-out;
+  transition: fill 1s ease-in-out;
+}
+
+html.busy #gradient {
+  -webkit-transition: opacity 5s ease-in-out;
+  transition: opacity 5s ease-in-out;
+}
+html.busy #logo>g {
+  -webkit-transition: fill 5s ease-in-out;
+  transition: fill 5s ease-in-out;
+}
