@@ -8,6 +8,8 @@ function Controller(){
   this.currentState = 0;
 
   this._int = null;
+  this._int2 = null;
+  this._to = null;
 };
 
 Controller.prototype = {
@@ -50,7 +52,7 @@ Controller.prototype = {
     document.documentElement.classList.add('started');
 
     var self = this;
-    setTimeout(function(){
+    this._to = setTimeout(function(){
       self.setState(self.currentState+1);
       self._int2 = setInterval(function(){
         document.documentElement.classList.add('busy');
@@ -70,6 +72,7 @@ Controller.prototype = {
     document.documentElement.classList.remove('busy');
 
     clearInterval(this._int2);
+    clearTimeout(this._to);
     this.setState(0);
   },
 
