@@ -228,6 +228,10 @@ footer {
 
 /* responsiveness */
 @media (min-width: 520px) {
+  body {
+    perspective: 800px;
+  }
+
   html:not(.mobile) #app-container {
     position: absolute;
     left: 50%;
@@ -238,9 +242,9 @@ footer {
     background: transparent url(../img/iphone.png) center center no-repeat;
     background-size: contain;
     -webkit-transform-origin: center top;
-    -webkit-transform: scale3d(.5,.5,1) translate3d(-243px,-445px,0);
+    -webkit-transform: scale3d(.5,.5,1) translate3d(-243px,-445px,0) rotate3d(0,1,0,4deg);
     transform-origin: left top;
-    transform: scale3d(.5,.5,1) translate3d(-243px,-445px,0);
+    transform: scale3d(.5,.5,1) translate3d(-243px,-445px,0) rotate3d(0,1,0,4deg);
     
   }
   html:not(.mobile) #app {
