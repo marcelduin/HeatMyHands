@@ -1,0 +1,13 @@
+CACHE MANIFEST
+#version 1413816013
+NETWORK:
+*
+CACHE:
+audio/noise.mp3
+audio/shatter.mp3
+audio/switch.mp3
+img/bg.jpg
+img/button.png
+img/glass.png
+img/iphone.png
+img/off.svg

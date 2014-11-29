@@ -25,10 +25,8 @@ body {
 
 canvas#webgl {
   position: absolute;
-  top: 18%;
-  left: 68%;
-  transform: translate3d(-50%,-50%,0);
-  -webkit-transform: translate3d(-50%,-50%,0);
+  top: -2%;
+  right: 1%;
   -webkit-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
   opacity: 0;
@@ -100,6 +98,8 @@ header>#logo-main {
 
 /* background gradients */
 .gradient {
+  -webkit-pointer-events: none;
+  pointer-events: none;
   -webkit-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
   opacity: 0;
@@ -192,12 +192,14 @@ header>#logo-main {
 .crack.a {
   background: transparent url(../img/glass.png) 50% center no-repeat;
   -webkit-transition-delay: 93s;
+  transition-delay: 93s;
 }
 .crack.b {
   background: transparent url(../img/glass.png) 50% center no-repeat;
   -webkit-transform: scale3d(-1,-1,1);
   transform: scale3d(-1,-1,1);
   -webkit-transition-delay: 153s;
+  transition-delay: 153s;
 }
 .started .crack {
   visibility: visible;

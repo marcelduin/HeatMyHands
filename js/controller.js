@@ -5,7 +5,7 @@ function Controller(){
   this.slider = new Slider(this);
 
   this.started = false;
-  this.currentState = 0;
+  this.audio = [];
 };
 
 Controller.prototype = {
@@ -36,6 +36,13 @@ Controller.prototype = {
     this.net.start();
 
     document.documentElement.classList.add('started');
+
+    this.playAudio('audio/switch.mp3');
+    this.playAudio('audio/noise.mp3');
+
+    var self = this;
+    this._to1 = setTimeout(function(){self.playAudio('audio/shatter.mp3')},92500);
+    this._to2 = setTimeout(function(){self.playAudio('audio/shatter.mp3')},152500);
   },
 
   stop: function(){
@@ -47,6 +54,30 @@ Controller.prototype = {
     this.net.stop();
 
     document.documentElement.classList.remove('started');
+
+    this.playAudio('audio/switch.mp3');
+    this.stopAudio('audio/noise.mp3');
+
+    clearTimeout(this._to1);
+    clearTimeout(this._to2);
+  },
+
+  getAudio: function(src){
+    var aud = this.audio[src];
+    if(!aud) {
+      aud = this.audio[src] = new Audio;
+      aud.src = src;
+    }
+    return aud;
+  },
+
+  playAudio: function(src){
+    this.getAudio(src).play();
+  },
+
+  stopAudio: function(src){
+    this.getAudio(src).pause();
+    this.getAudio(src).currentTime = 0;
   }
 
 };
