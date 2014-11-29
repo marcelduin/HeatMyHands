@@ -12,12 +12,6 @@ body {
   color: #fff;
   background: #222;
 }
-#debug {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: none;
-}
 .gradient {
   opacity: 0;
 }

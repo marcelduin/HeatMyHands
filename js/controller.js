@@ -8,17 +8,10 @@ function Controller(){
   this.currentState = 0;
 
   this._int = null;
-  this._int2 = null;
   this._to = null;
 };
 
 Controller.prototype = {
-  _numWorkers: document.querySelector('#num_workers'),
-  _numShaders: document.querySelector('#num_shaders'),
-  _numConnections: document.querySelector('#num_connections'),
-  _numTotalConnections: document.querySelector('#num_tot_connections'),
-  _fps: document.querySelector('#fps'),
-
   init: function(){
     this.cpu.init();
     this.gpu.init();
@@ -37,9 +30,6 @@ Controller.prototype = {
       self[self.started?'stop':'start']();
     };
 
-    this._int = setInterval(function(){
-      self.printInfo();
-    },1000);
   },
 
   start: function(){
@@ -80,13 +70,6 @@ Controller.prototype = {
     this.currentState = state = Math.min(state,3);
     console.log('state:',state);
     document.body.className = state ? 'state-'+state : '';
-  },
-
-  printInfo: function(){
-    this._numWorkers.textContent = this.cpu.workers.length;
-    this._numShaders.textContent = this.gpu.shaders.length;
-    this._fps.textContent = this.gpu.fps;
-    this._numConnections.textContent = this.net.connections.length;
-    this._numTotalConnections.textContent = this.net.totalConnections;
   }
+
 };
