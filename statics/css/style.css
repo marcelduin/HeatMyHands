@@ -59,7 +59,7 @@ header>#logo-main {
   position: absolute;
   width: 80px;
   height: 80px;
-  background: transparent url(../img/button.png) center center no-repeat;
+  background: transparent url(/statics/img/button.png) center center no-repeat;
   background-size: contain;
   left: 0px;
   cursor: pointer;
@@ -79,7 +79,7 @@ header>#logo-main {
   top: 6px;
   right: 6px;
   bottom: 6px;
-  background: transparent url(../img/off.svg) right 64px center no-repeat;
+  background: transparent url(/statics/img/off.svg) right 64px center no-repeat;
   background-size: auto 18px;
 }
 .slider>.on {
@@ -190,12 +190,12 @@ header>#logo-main {
   opacity: .6;
 }
 .crack.a {
-  background: transparent url(../img/glass.png) 50% center no-repeat;
+  background: transparent url(/statics/img/glass.png) 50% center no-repeat;
   -webkit-transition-delay: 93s;
   transition-delay: 93s;
 }
 .crack.b {
-  background: transparent url(../img/glass.png) 50% center no-repeat;
+  background: transparent url(/statics/img/glass.png) 50% center no-repeat;
   -webkit-transform: scale3d(-1,-1,1);
   transform: scale3d(-1,-1,1);
   -webkit-transition-delay: 153s;
@@ -208,7 +208,7 @@ header>#logo-main {
 
 /* actual site */
 #phone {
-  background: transparent url(../img/bg.jpg) center top no-repeat;
+  background: transparent url(/statics/img/bg.jpg) center top no-repeat;
   background-size: 100% auto;
   opacity: .1;
 }
@@ -241,7 +241,7 @@ footer {
     width: 486px;
     height: 891px;
     padding-top: 83px;
-    background: transparent url(../img/iphone.png) center center no-repeat;
+    background: transparent url(/statics/img/iphone.png) center center no-repeat;
     background-size: contain;
     -webkit-transform-origin: center top;
     -webkit-transform: scale3d(.5,.5,1) translate3d(-243px,-445px,0) rotate3d(0,1,0,4deg);

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo
-echo Burn Baby Burn compilation script
+echo Heat My Hands compilation script
 echo -- marcel@q42.nl
 echo
 
@@ -10,15 +10,19 @@ rm -rf build
 mkdir build
 
 #Copy images
-echo "Copying images..."
-cp -R img build > /dev/null
-cp -R audio build > /dev/null
+echo "Copying statics..."
+cp -R statics build > /dev/null
+mkdir build/templates
+cp app.yaml build
+cp main.* build
+rm -rf build/statics/js
+rm -rf build/statics/css
 
 #CSS & JS minification
 function compile {
   echo "Compiling $1.."
   fn="hmh.$1"
-  out="build/$fn"
+  out="build/statics/$fn"
   for file in $2
   do
     cat "./$file">>$fn
@@ -34,17 +38,17 @@ function compile {
   rm $fn
 }
 
-css=`sed 's/.*<link rel=\"stylesheet\".*href=\"\(.*\)\".*/\1/p;d' index.html`
-js=`sed 's/.*<script type=\"text\/javascript\" .*src=\"\(.*\)\".*/\1/p;d' index.html`
+css=`sed 's/.*<link rel=\"stylesheet\".*href=\"\(.*\)\".*/\1/p;d' templates/index.html`
+js=`sed 's/.*<script type=\"text\/javascript\" .*src=\"\(.*\)\".*/\1/p;d' templates/index.html`
 
 compile css "$css"
 compile js "$js"
 
 #Point HTML references to compiled files
-out="build/index.html"
-cat index.html|grep -v "<link rel=\"stylesheet\""|egrep -v "<script type=\"text\/javascript\".*" > $out
-sed "s/<!-- css -->/<link rel=\"stylesheet\" type=\"text\/css\" href=\"hmh.css\" \/>/g" $out > tmp1.tmp
-sed "s/<!-- js -->/<script type=\"text\/javascript\" src=\"hmh.js\"><\/script>/g" tmp1.tmp > tmp2.tmp
+out="build/templates/index.html"
+cat templates/index.html|grep -v "<link rel=\"stylesheet\""|egrep -v "<script type=\"text\/javascript\".*" > $out
+sed "s/<!-- css -->/<link rel=\"stylesheet\" type=\"text\/css\" href=\"\/statics\/hmh.css\" \/>/g" $out > tmp1.tmp
+sed "s/<!-- js -->/<script type=\"text\/javascript\" src=\"\/statics\/hmh.js\"><\/script>/g" tmp1.tmp > tmp2.tmp
 mv tmp2.tmp $out
 rm tmp1.tmp
 
