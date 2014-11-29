@@ -35,6 +35,7 @@ Controller.prototype = {
   start: function(){
     if(this.started) return;
     this.started = true;
+
     this.cpu.start();
     this.gpu.start();
     this.net.start();
@@ -45,7 +46,6 @@ Controller.prototype = {
     this._to = setTimeout(function(){
       self.setState(self.currentState+1);
       self._int2 = setInterval(function(){
-        document.documentElement.classList.add('busy');
         self.setState(self.currentState+1);
       },60000);
     },2000);
@@ -59,7 +59,6 @@ Controller.prototype = {
     this.net.stop();
 
     document.documentElement.classList.remove('started');
-    document.documentElement.classList.remove('busy');
 
     clearInterval(this._int2);
     clearTimeout(this._to);

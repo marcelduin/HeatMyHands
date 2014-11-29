@@ -12,46 +12,15 @@ body {
   color: #fff;
   background: #222;
 }
-.gradient {
-  opacity: 0;
-}
 .gradient,
-#phone,
-#glass1,
-#glass2 {
+.crack,
+#phone {
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   overflow: hidden;
-}
-#glass1,#glass2 {
-  pointer-events: none;
-  -webkit-pointer-events: none;
-  z-index: 10;
-  visibility: hidden;
-  -webkit-transition: visibility 0s 30s;
-  transition: visibility 0s 30s;
-}
-#glass1 {
-  background: transparent url(../img/glass.png) 50% center no-repeat;
-  background-size: cover;
-  opacity: .6;
-}
-#glass2 {
-  background: transparent url(../img/glass.png) 50% center no-repeat;
-  background-size: cover;
-  -webkit-transform: scale3d(-1,-1,1);
-  transform: scale3d(-1,-1,1);
-  opacity: .6;
-}
-body.state-2 #glass1 {
-  visibility: visible;
-}
-body.state-3 #glass1, body.state-3 #glass2 {
-  visibility: visible;
-
 }
 
 canvas#webgl {
@@ -129,72 +98,111 @@ header>#logo {
   height: 15px;
 }
 
-
-/* states */
-html.started #logo>g {
-  fill: #000;
-}
-
-body.state-1 .gradient {
-  opacity: 1;
-  background: transparent linear-gradient(180deg,#e8af66,#f89456,#d29457);
-}
-body.state-1 #logo>g {
-  fill: #ffbd5c;
-}
-body.state-1 .slider {
-  background: transparent linear-gradient(180deg,#df6f28,#f9ba8e);
-}
-
-
-body.state-2 .gradient {
-  opacity: 1;
-  background: transparent linear-gradient(180deg,#ff8d5d,#ff9a80,#ff73a3);
-}
-body.state-2 #logo>g {
-  fill: #f16482;
-}
-body.state-2 .slider>.on svg>g {
-  fill: #ff887f;
-}
-
-body.state-2 .slider {
-  background: transparent linear-gradient(180deg,#d98771,#feb9b4);
-}
-
-body.state-3 .gradient {
-  opacity: 1;
-  background: transparent linear-gradient(180deg,#fec3a7,#aeb3e8,#c9aef1,#d5d8ff);
-}
-body.state-3 #logo>g {
-  fill: #f8e9ff;
-}
-body.state-3 .slider>.on svg>g {
-  fill: #ccb8dd;
-}
-body.state-3 .slider {
-  background: transparent linear-gradient(180deg,#b495c9,#e7dff7);
-}
-
-/* transitions */
+/* background gradients */
 .gradient {
   -webkit-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
+  opacity: 0;
 }
-#logo>g,
-.slider>.on svg>g {
+.started .gradient {
+  -webkit-transition-duration: 60s;
+  transition-duration: 60s;
+}
+
+.gradient.b { border-radius: 32px; }
+.started .gradient { opacity: 1; }
+
+.started .gradient.one {
+  -webkit-transition-duration: 1s;
+  -webkit-transition-delay: 2s;
+  transition-duration: 1s;
+  transition-delay: 2s;
+}
+.started .gradient.two {
+  -webkit-transition-delay: 3s;
+  transition-delay: 3s;
+}
+.started .gradient.three {
+  -webkit-transition-delay: 63s;
+  transition-delay: 63s;
+}
+
+.gradient.a.one   { background-image: linear-gradient(180deg,#e8af66,#f89456,#d29457); }
+.gradient.a.two   { background-image: linear-gradient(180deg,#ff8d5d,#ff9a80,#ff73a3); }
+.gradient.a.three { background-image: linear-gradient(180deg,#fec3a7,#aeb3e8,#c9aef1,#d5d8ff); }
+
+.gradient.b.one   { background-image: linear-gradient(180deg,#df6f28,#f9ba8e); }
+.gradient.b.two   { background-image: linear-gradient(180deg,#d98771,#feb9b4); }
+.gradient.b.three { background-image: linear-gradient(180deg,#b495c9,#e7dff7); }
+
+/* text transitions */
+.text {
   -webkit-transition: fill 1s ease-in-out;
   transition: fill 1s ease-in-out;
 }
+.started #logo {
+	-webkit-animation: text-one 123s forwards;
+	animation: text-one 123s forwards;
+}
+.started #burn {
+	-webkit-animation: text-two 123s forwards;
+	animation: text-two 123s forwards;
+}
 
-html.busy .gradient {
-  -webkit-transition: opacity 5s ease-in-out;
-  transition: opacity 5s ease-in-out;
+@-webkit-keyframes text-one-a {
+	to { fill: #000; }
 }
-html.busy #logo>g {
-  -webkit-transition: fill 5s ease-in-out;
-  transition: fill 5s ease-in-out;
+@-webkit-keyframes text-one {
+	1.6260162% { fill: #000; }
+	2.4390243% { fill: #ffbd5c; }
+	51.219512% { fill: #f16482; }
+	100% { fill: #ff887f; }
 }
+@keyframes text-one {
+	1.6260162% { fill: #000; }
+	2.4390243% { fill: #ffbd5c; }
+	51.219512% { fill: #f16482; }
+	100% { fill: #ff887f; }
+}
+
+@-webkit-keyframes text-two {
+	1.6260162% { fill: #EA9456; }
+	2.4390243% { fill: #ffbd5c; }
+	51.219512% { fill: #f16482; }
+	100% { fill: #ff887f; }
+}
+@keyframes text-two {
+	1.6260162% { fill: #EA9456; }
+	2.4390243% { fill: #ffbd5c; }
+	51.219512% { fill: #ff887f; }
+	100% { fill: #ccb8dd; }
+}
+
+/* cracks */
+.crack {
+  pointer-events: none;
+  -webkit-pointer-events: none;
+  z-index: 10;
+  visibility: hidden;
+  -webkit-transition: visibility;
+  transition: visibility;
+  background-size: cover;
+  opacity: .6;
+}
+.crack.a {
+  background: transparent url(../img/glass.png) 50% center no-repeat;
+  -webkit-transition-delay: 93s;
+}
+.crack.b {
+  background: transparent url(../img/glass.png) 50% center no-repeat;
+  -webkit-transform: scale3d(-1,-1,1);
+  transform: scale3d(-1,-1,1);
+  -webkit-transition-delay: 153s;
+}
+.started .crack {
+  visibility: visible;
+}
+
 
 /* actual site */
 #phone {
