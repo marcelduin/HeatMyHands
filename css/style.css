@@ -40,27 +40,26 @@ html.started canvas#webgl {
 header {
   position: relative;
   z-index: 10;
-  width: 320px;
-  height: 201px;
   margin: 5px auto;
 }
-header>#logo {
-  height: 100%;
-  margin: 0 auto;
+header>#logo-main {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
 }
 
 .slider {
-  width: 180px;
-  height: 64px;
+  width: 240px;
+  height: 80px;
   margin: 40px auto;
   position: relative;
-  border-radius: 32px;
+  border-radius: 40px;
   background: #bbb linear-gradient(180deg,#212121,#3e3c3c);
 }
 .slider>.button {
   position: absolute;
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
   background: transparent url(../img/button.png) center center no-repeat;
   background-size: contain;
   left: 0px;
@@ -68,21 +67,21 @@ header>#logo {
 }
 .slider>.back {
   position: absolute;
-  top: 6px;
   left: 6px;
-  width: 168px;
-  height: 52px;
-  border-radius: 26px;
+  right: 6px;
+  top: 6px;
+  bottom: 6px;
+  border-radius: 34px;
   background: #171717;
 }
 .slider>.off {
   position: absolute;
+  width: 100%;
   top: 6px;
   right: 6px;
-  width: 168px;
-  height: 52px;
-  background: transparent url(../img/off.svg) right 50px center no-repeat;
-  background-size: auto 30%;
+  bottom: 6px;
+  background: transparent url(../img/off.svg) right 64px center no-repeat;
+  background-size: auto 18px;
 }
 .slider>.on {
   position: absolute;
@@ -93,9 +92,9 @@ header>#logo {
   overflow: hidden;
 }
 .slider>.on svg {
-  margin-top: 19px;
-  margin-left: 10px;
-  height: 15px;
+  margin-top: 24px;
+  margin-left: 24px;
+  height: 18px;
 }
 
 /* background gradients */
@@ -109,7 +108,7 @@ header>#logo {
   transition-duration: 60s;
 }
 
-.gradient.b { border-radius: 32px; }
+.gradient.b { border-radius: 38px; }
 .started .gradient { opacity: 1; }
 
 .started .gradient.one {

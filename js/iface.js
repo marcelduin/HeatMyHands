@@ -1,5 +1,5 @@
 function Slider(controller, element) {
-  this.margin = 32;
+  this.margin = 40;
   this.swiping = false;
   this.currentOn = false;
 };
