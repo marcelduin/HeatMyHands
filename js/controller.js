@@ -41,6 +41,7 @@ Controller.prototype = {
   stop: function(){
     if(!this.started) return;
     this.started = false;
+
     this.cpu.stop();
     this.gpu.stop();
     this.net.stop();

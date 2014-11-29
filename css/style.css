@@ -49,6 +49,7 @@ header>#logo-main {
 }
 
 .slider {
+  z-index: 5;
   width: 240px;
   height: 80px;
   margin: 40px auto;
@@ -215,11 +216,14 @@ section#content {
 }
 
 footer {
+  position: absolute;
+  bottom: 20px;
   color: rgba(255,255,255,.32);
   padding: 0 10%;
   font-weight: bold;
   text-align: center;
   font-size: 12px;
+  opacity: .5;
 }
 
 /* responsiveness */
@@ -283,11 +287,11 @@ footer {
     color: rgba(255,255,255,.66);
   }
   footer {
-    position: absolute;
     bottom: 40px;
     width: 60%;
     left: 20%;
     padding: 0;
+    opacity: 1;
   }
 
 }
