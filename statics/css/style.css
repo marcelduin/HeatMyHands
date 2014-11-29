@@ -23,6 +23,13 @@ body {
   overflow: hidden;
 }
 
+a {
+  color: #bbb;
+}
+a:hover {
+  color: #fff;
+}
+
 canvas#webgl {
   position: absolute;
   top: -2%;
@@ -50,7 +57,7 @@ header>#logo-main {
   z-index: 5;
   width: 240px;
   height: 80px;
-  margin: 40px auto;
+  margin: 20px auto;
   position: relative;
   border-radius: 40px;
   background: #bbb linear-gradient(180deg,#212121,#3e3c3c);
@@ -221,10 +228,10 @@ footer {
   position: absolute;
   bottom: 20px;
   color: rgba(255,255,255,.32);
-  padding: 0 10%;
+  padding: 0 5%;
   font-weight: bold;
   text-align: center;
-  font-size: 12px;
+  font-size: 11px;
   opacity: .5;
 }
 
@@ -293,9 +300,9 @@ footer {
     color: rgba(255,255,255,.66);
   }
   footer {
-    bottom: 40px;
-    width: 60%;
-    left: 20%;
+    bottom: 20px;
+    width: 80%;
+    left: 10%;
     padding: 0;
     opacity: 1;
   }
