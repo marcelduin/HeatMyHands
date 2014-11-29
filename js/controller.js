@@ -6,9 +6,6 @@ function Controller(){
 
   this.started = false;
   this.currentState = 0;
-
-  this._int = null;
-  this._to = null;
 };
 
 Controller.prototype = {
@@ -25,11 +22,9 @@ Controller.prototype = {
     if(this.isMobile) document.documentElement.classList.add('mobile');
 
     var self = this;
-
     this.slider.onchange = function(bool){
       self[self.started?'stop':'start']();
     };
-
   },
 
   start: function(){
@@ -41,14 +36,6 @@ Controller.prototype = {
     this.net.start();
 
     document.documentElement.classList.add('started');
-
-    var self = this;
-    this._to = setTimeout(function(){
-      self.setState(self.currentState+1);
-      self._int2 = setInterval(function(){
-        self.setState(self.currentState+1);
-      },60000);
-    },2000);
   },
 
   stop: function(){
@@ -59,16 +46,6 @@ Controller.prototype = {
     this.net.stop();
 
     document.documentElement.classList.remove('started');
-
-    clearInterval(this._int2);
-    clearTimeout(this._to);
-    this.setState(0);
-  },
-
-  setState: function(state){
-    this.currentState = state = Math.min(state,3);
-    console.log('state:',state);
-    document.body.className = state ? 'state-'+state : '';
   }
 
 };
