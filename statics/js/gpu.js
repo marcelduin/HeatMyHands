@@ -25,32 +25,32 @@ GPU.prototype = {
 
   init: function(){
     this.error = /MSIE/.test(navigator.userAgent);
-		if(!this.error) try {
-			this.gl = this._canvas.getContext('webgl') || this._canvas.getContext('experimental-webgl');
-			if(!window.WebGLRenderingContext) throw 'Your browser does not support WebGL.';
-			this.gl.viewportWidth = this.size;
-			this.gl.viewportHeight = this.size;
-		}
-		catch(e){
-		  this.error = true;
-		}
-		if(this.error) return console.warn('Could not initialize WebGL');
+    if(!this.error) try {
+      this.gl = this._canvas.getContext('webgl') || this._canvas.getContext('experimental-webgl');
+      if(!window.WebGLRenderingContext) throw 'Your browser does not support WebGL.';
+      this.gl.viewportWidth = this.size;
+      this.gl.viewportHeight = this.size;
+    }
+    catch(e){
+      this.error = true;
+    }
+    if(this.error) return console.warn('Could not initialize WebGL');
 
-	  this.vertexShader = Shaders.getShader('vertex',this.gl);
-	  this.fragmentShader = Shaders.getShader('fragment',this.gl);
+    this.vertexShader = Shaders.getShader('vertex',this.gl);
+    this.fragmentShader = Shaders.getShader('fragment',this.gl);
 
-		this.gl.blendFunc(this.gl.SRC_ALPHA,this.gl.ONE);
-		this.gl.enable(this.gl.BLEND);
-		this.gl.clearColor(0,0,0,0);
-		this.gl.viewport(0,0,this.size,this.size);
+    this.gl.blendFunc(this.gl.SRC_ALPHA,this.gl.ONE);
+    this.gl.enable(this.gl.BLEND);
+    this.gl.clearColor(0,0,0,0);
+    this.gl.viewport(0,0,this.size,this.size);
 
-		this.quad = this.gl.createBuffer();
-		this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.quad);
-		this.gl.bufferData(this.gl.ARRAY_BUFFER, new Float32Array([-1.,-1.,1.,-1.,-1.,1.,1.,-1.,1.,1.,-1.,1.]), this.gl.STATIC_DRAW);
+    this.quad = this.gl.createBuffer();
+    this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.quad);
+    this.gl.bufferData(this.gl.ARRAY_BUFFER, new Float32Array([-1.,-1.,1.,-1.,-1.,1.,1.,-1.,1.,1.,-1.,1.]), this.gl.STATIC_DRAW);
 
-	  var self = this;
-	  addEventListener('focus',function(){self.focussed = true});
-	  addEventListener('blur',function(){self.focussed = false});
+    var self = this;
+    addEventListener('focus',function(){self.focussed = true});
+    addEventListener('blur',function(){self.focussed = false});
   },
 
   start: function(){
@@ -74,7 +74,7 @@ GPU.prototype = {
 
     },1000);
 
-	  this.addShader();
+    this.addShader();
 
   },
 
@@ -92,32 +92,32 @@ GPU.prototype = {
   },
 
   addShader: function(){
-	  var shader = this.gl.createProgram();
+    var shader = this.gl.createProgram();
     shader.start = Date.now();
-		this.gl.attachShader(shader,this.vertexShader);
-		this.gl.attachShader(shader,this.fragmentShader);
-		this.gl.linkProgram(shader);
-		if(!this.gl.getProgramParameter(shader, this.gl.LINK_STATUS))
-			console.warn('Could not initialise shaders');
-		else this.shaders.push(shader);
+    this.gl.attachShader(shader,this.vertexShader);
+    this.gl.attachShader(shader,this.fragmentShader);
+    this.gl.linkProgram(shader);
+    if(!this.gl.getProgramParameter(shader, this.gl.LINK_STATUS))
+      console.warn('Could not initialise shaders');
+    else this.shaders.push(shader);
   },
 
   draw: function(){
-		this.gl.clear(this.gl.COLOR_BUFFER_BIT);
-		this._now = Date.now();
-		for(this._i=0;this._i<this.shaders.length;this._i++) {
-			this._pos = this.gl.getAttribLocation(this.shaders[this._i], 'position');
-			this._time = this.gl.getUniformLocation(this.shaders[this._i], 'time');
+    this.gl.clear(this.gl.COLOR_BUFFER_BIT);
+    this._now = Date.now();
+    for(this._i=0;this._i<this.shaders.length;this._i++) {
+      this._pos = this.gl.getAttribLocation(this.shaders[this._i], 'position');
+      this._time = this.gl.getUniformLocation(this.shaders[this._i], 'time');
 
-			this.gl.useProgram(this.shaders[this._i]);
-			this.gl.uniform1f(this._time,(this._now-this.shaders[this._i].start)/1000);
-			this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.quad);
-			this.gl.vertexAttribPointer(this._pos, 2, this.gl.FLOAT, false, 0, 0);
-			this.gl.enableVertexAttribArray(this._pos);
-			this.gl.drawArrays(this.gl.TRIANGLES, 0, 6);
-			this.gl.disableVertexAttribArray(this._pos);
-		}
-		this.drawn++;
+      this.gl.useProgram(this.shaders[this._i]);
+      this.gl.uniform1f(this._time,(this._now-this.shaders[this._i].start)/1000);
+      this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.quad);
+      this.gl.vertexAttribPointer(this._pos, 2, this.gl.FLOAT, false, 0, 0);
+      this.gl.enableVertexAttribArray(this._pos);
+      this.gl.drawArrays(this.gl.TRIANGLES, 0, 6);
+      this.gl.disableVertexAttribArray(this._pos);
+    }
+    this.drawn++;
   }
 
 };
@@ -147,12 +147,12 @@ var Shaders = {
   ].join('\n'),
 
   getShader: function(type,gl) {
-  	var shader=gl.createShader(type=='fragment'?gl.FRAGMENT_SHADER:gl.VERTEX_SHADER)
-		gl.shaderSource(shader,Shaders[type]);
-		gl.compileShader(shader);
-		if(!gl.getShaderParameter(shader,gl.COMPILE_STATUS))
-		  console.error('Shader Syntax Error in ['+type+']:\n'+gl.getShaderInfoLog(shader));
+    var shader=gl.createShader(type=='fragment'?gl.FRAGMENT_SHADER:gl.VERTEX_SHADER)
+    gl.shaderSource(shader,Shaders[type]);
+    gl.compileShader(shader);
+    if(!gl.getShaderParameter(shader,gl.COMPILE_STATUS))
+      console.error('Shader Syntax Error in ['+type+']:\n'+gl.getShaderInfoLog(shader));
 
-		return shader;
+    return shader;
   }
 };
