@@ -24,7 +24,7 @@ body {
 }
 
 a {
-  color: #bbb;
+  color: rgba(255,255,255,.6875);
 }
 a:hover {
   color: #fff;
@@ -148,41 +148,41 @@ header>#logo-main {
   transition: fill 1s ease-in-out;
 }
 .started #logo {
-	-webkit-animation: text-one 123s forwards;
-	animation: text-one 123s forwards;
+  -webkit-animation: text-one 123s forwards;
+  animation: text-one 123s forwards;
 }
 .started #burn {
-	-webkit-animation: text-two 123s forwards;
-	animation: text-two 123s forwards;
+  -webkit-animation: text-two 123s forwards;
+  animation: text-two 123s forwards;
 }
 
 @-webkit-keyframes text-one-a {
-	to { fill: #000; }
+  to { fill: #000; }
 }
 @-webkit-keyframes text-one {
-	1.6260162% { fill: #000; }
-	2.4390243% { fill: #ffbd5c; }
-	51.219512% { fill: #f16482; }
-	100% { fill: #ff887f; }
+  1.6260162% { fill: #000; }
+  2.4390243% { fill: #ffbd5c; }
+  51.219512% { fill: #f16482; }
+  100% { fill: #ff887f; }
 }
 @keyframes text-one {
-	1.6260162% { fill: #000; }
-	2.4390243% { fill: #ffbd5c; }
-	51.219512% { fill: #f16482; }
-	100% { fill: #ff887f; }
+  1.6260162% { fill: #000; }
+  2.4390243% { fill: #ffbd5c; }
+  51.219512% { fill: #f16482; }
+  100% { fill: #ff887f; }
 }
 
 @-webkit-keyframes text-two {
-	1.6260162% { fill: #EA9456; }
-	2.4390243% { fill: #ffbd5c; }
-	51.219512% { fill: #f16482; }
-	100% { fill: #ff887f; }
+  1.6260162% { fill: #EA9456; }
+  2.4390243% { fill: #ffbd5c; }
+  51.219512% { fill: #f16482; }
+  100% { fill: #ff887f; }
 }
 @keyframes text-two {
-	1.6260162% { fill: #EA9456; }
-	2.4390243% { fill: #ffbd5c; }
-	51.219512% { fill: #ff887f; }
-	100% { fill: #ccb8dd; }
+  1.6260162% { fill: #EA9456; }
+  2.4390243% { fill: #ffbd5c; }
+  51.219512% { fill: #ff887f; }
+  100% { fill: #ccb8dd; }
 }
 
 /* cracks */
@@ -301,10 +301,14 @@ footer {
   }
   footer {
     bottom: 20px;
-    width: 80%;
-    left: 10%;
+    width: 100%;
+    left: 0;
     padding: 0;
     opacity: 1;
+  }
+  footer>p {
+    max-width: 730px;
+    margin: 1em auto;
   }
 
 }
