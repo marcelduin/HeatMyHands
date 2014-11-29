@@ -1,3 +1,6 @@
 /build
 /work
+/lib
+compile.sh
+deploy.sh
 main.pyc

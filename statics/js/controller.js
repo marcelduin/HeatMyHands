@@ -38,7 +38,7 @@ Controller.prototype = {
     document.documentElement.classList.add('started');
 
     this.playAudio('/statics/audio/switch.mp3');
-    this.playAudio('/statics/audio/noise.mp3');
+    this.playAudio('/statics/audio/startup.mp3');
 
     var self = this;
     this._to1 = setTimeout(function(){self.playAudio('/statics/audio/shatter.mp3')},92500);
@@ -56,7 +56,7 @@ Controller.prototype = {
     document.documentElement.classList.remove('started');
 
     this.playAudio('/statics/audio/switch.mp3');
-    this.stopAudio('/statics/audio/noise.mp3');
+    this.stopAudio('/statics/audio/startup.mp3');
 
     clearTimeout(this._to1);
     clearTimeout(this._to2);
